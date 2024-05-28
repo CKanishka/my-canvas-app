@@ -6,14 +6,21 @@ import { Eraser, Undo } from "lucide-react";
 function CanvasHome() {
   const [canvasData, setCanvasData] = useState("");
   const canvasRef = useRef<CanvasDraw>(null);
+
+  const handleUndo = () => {
+    canvasRef.current?.undo();
+  };
+
+  const handleClear = () => {
+    canvasRef.current?.clear();
+  };
   return (
     <>
       <CanvasDraw
+        ref={canvasRef}
         onChange={(canvas) => {
           const data = canvas.getSaveData();
-          console.log(data);
           setCanvasData(data);
-          canvasRef?.current?.loadSaveData(data, true);
         }}
         canvasWidth={window.innerWidth}
         canvasHeight={window.innerHeight}
@@ -21,12 +28,20 @@ function CanvasHome() {
       />
       <div className="top-section">
         <div className="toolbar">
-          <div className="toolbar__item">
+          <div
+            className="toolbar__item"
+            role="button"
+            onClick={() => handleUndo()}
+          >
             <Undo />
             Undo
           </div>
           <div className="toolbar__divider" />
-          <div className="toolbar__item">
+          <div
+            className="toolbar__item"
+            role="button"
+            onClick={() => handleClear()}
+          >
             <Eraser />
             Clear
           </div>
