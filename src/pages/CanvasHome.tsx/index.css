@@ -1,0 +1,51 @@
+.top-section {
+  position: fixed;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canvas-info {
+  color: hsl(208, 37%, 20%, 50%);
+  font-size: small;
+}
+.toolbar {
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 0.9310142993927002px 0px rgba(0, 0, 0, 0.17),
+    0px 0px 3.1270833015441895px 0px rgba(0, 0, 0, 0.08),
+    0px 7px 14px 0px rgba(0, 0, 0, 0.05);
+
+  background-color: white;
+  color: #213547;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+}
+
+.toolbar__item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.toolbar__item:hover {
+  cursor: pointer;
+  background-color: hsl(221, 57%, 88%);
+}
+
+.toolbar__divider {
+  height: 30px;
+  width: 1px;
+
+  background-color: hsl(208, 37%, 20%, 50%);
+}
