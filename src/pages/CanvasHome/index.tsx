@@ -1,11 +1,13 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import CanvasDraw from "react-canvas-draw";
 import "./index.css";
 import { Eraser, Undo } from "lucide-react";
 import { Link } from "react-router-dom";
+import useSyncState from "../../hooks/useSyncState";
+import { MY_CANVAS_BROADACAST_CHANNEL } from "../../constants";
 
 function CanvasHome() {
-  const [canvasData, setCanvasData] = useState("");
+  const [, setCanvasData] = useSyncState(MY_CANVAS_BROADACAST_CHANNEL, "");
   const canvasRef = useRef<CanvasDraw>(null);
 
   const handleUndo = () => {
@@ -14,6 +16,7 @@ function CanvasHome() {
 
   const handleClear = () => {
     canvasRef.current?.clear();
+    setCanvasData(canvasRef.current?.getSaveData() ?? "");
   };
   return (
     <>
