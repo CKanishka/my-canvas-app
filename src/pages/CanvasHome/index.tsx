@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 import "./index.css";
 import { Eraser, Undo } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function CanvasHome() {
   const [canvasData, setCanvasData] = useState("");
@@ -48,8 +49,11 @@ function CanvasHome() {
         </div>
 
         <p className="canvas-info">
-          Start drawing on the canvas and visit the /mirror page to see a live
-          mirrored version of your artwork.
+          Start drawing on the canvas and visit the{" "}
+          <Link target="_blank" to="/mirror">
+            /mirror
+          </Link>{" "}
+          page to see a live mirrored version of your artwork.
         </p>
       </div>
     </>
