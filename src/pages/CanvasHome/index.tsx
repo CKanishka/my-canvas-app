@@ -10,6 +10,11 @@ function CanvasHome() {
   const [, setCanvasData] = useSyncState(MY_CANVAS_BROADACAST_CHANNEL, "");
   const canvasRef = useRef<CanvasDraw>(null);
 
+  const handleChange = (canvas: CanvasDraw) => {
+    const data = canvas.getSaveData();
+    setCanvasData(data);
+  };
+
   const handleUndo = () => {
     canvasRef.current?.undo();
   };
@@ -22,10 +27,7 @@ function CanvasHome() {
     <>
       <CanvasDraw
         ref={canvasRef}
-        onChange={(canvas) => {
-          const data = canvas.getSaveData();
-          setCanvasData(data);
-        }}
+        onChange={handleChange}
         canvasWidth={window.innerWidth}
         canvasHeight={window.innerHeight}
         lazyRadius={0}
